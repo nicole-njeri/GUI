@@ -1,10 +1,12 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require "includes/constants.php";
 require "includes/dbConnection.php";
 require "lang/en.php";
 
-// Class Auto Load
+
 function classAutoLoad($classname){
 
     $directories = ["contents", "layouts", "menus", "forms", "processes", "global"];
