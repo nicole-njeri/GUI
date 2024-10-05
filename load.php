@@ -1,10 +1,13 @@
 <?php
+session_start();
+require "includes/constants.php";
+require "includes/dbConnection.php";
+require "lang/en.php";
 
-// Class Auto Load 
-
+// Class Auto Load
 function classAutoLoad($classname){
 
-    $directories = ["contents", "layouts", "menus"];
+    $directories = ["contents", "layouts", "menus", "forms", "processes", "global"];
 
     foreach($directories AS $dir){
         $filename = dirname(__FILE__) . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $classname . ".php";
@@ -14,31 +17,22 @@ function classAutoLoad($classname){
     }
 }
 
-spl_autoload_register('classAutoLoad');
+    spl_autoload_register('classAutoLoad');
+
+    $ObjGlob = new fncs();
+    $ObjSendMail = new SendMail();
 
 // Create instances of all classes
     $ObjLayouts = new layouts();
     $ObjMenus = new menus();
     $ObjHeadings = new headings();
     $ObjCont = new contents();
+    $ObjForm = new user_forms();
+    $conn = new dbConnection(DBTYPE, HOSTNAME, DBPORT, HOSTUSER, HOSTPASS, DBNAME);
 
-require "includes/constants.php";
-require "includes/dbConnection.php";
+// Create process instances
 
-$conn = new dbConnection(DBTYPE, HOSTNAME, DBPORT, HOSTUSER, HOSTPASS, DBNAME);
+    $ObjAuth = new auth();
+    $ObjAuth->signup($conn, $ObjGlob, $ObjSendMail, $lang, $conf);
+    $ObjAuth->verify_code($conn, $ObjGlob, $ObjSendMail, $lang, $conf);
 
-
-// print 
-// print "<br>";
-// print "<br>";
-// print $_SERVER["PHP_SELF"];
-// print "<br>";
-// print "<br>";
-// print basename($_SERVER["PHP_SELF"]);
-// print "<br>";
-// print "<br>";
-// if(file_exists("index.php") AND is_readable("index.php")){
-//     print "yes";
-// }else{
-//     print "no";
-// }

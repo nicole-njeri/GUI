@@ -18,11 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `api_d`
+-- Database: `iap`
 --
-DROP DATABASE IF EXISTS `api_d`;
-CREATE DATABASE IF NOT EXISTS `api_d` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `api_d`;
+DROP DATABASE IF EXISTS `iap`;
+CREATE DATABASE IF NOT EXISTS `iap` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `iap`;
 
 -- --------------------------------------------------------
 
