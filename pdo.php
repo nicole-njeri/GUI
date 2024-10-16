@@ -3,7 +3,7 @@
   $servername = "localhost";
   $username = "root";
   $password = "";
-  $dbname = "api_d";
+  $dbname = "api";
 
   try {
     // Create the connection

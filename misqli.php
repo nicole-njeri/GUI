@@ -2,7 +2,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$bdname = "api_d";
+	$bdname = "api";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $bdname);

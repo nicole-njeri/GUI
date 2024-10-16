@@ -44,7 +44,7 @@ class user_forms{
             print $ObjGlob->getMsg('msg');
             $err = $ObjGlob->getMsg('errors');
             ?>
-            <form action="<?php print basename($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+            <form action="set_password.php"<?php print basename($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="fullname" class="form-label">Verification Code:</label>
                     <input type="number" name="ver_code" class="form-control form-control-lg" maxlength="6" min="100000" max="999999" id="ver_code" placeholder="Enter your verification code" <?php print (isset($_SESSION["ver_code"])) ? 'value="'.$_SESSION["ver_code"].'"'  : ''; unset($_SESSION["ver_code"]); ?> >
